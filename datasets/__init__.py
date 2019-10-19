@@ -1,11 +1,6 @@
 """This package includes all the modules related to data loading and preprocessing.
 
     To add a custom dataset class called 'dummy', you need to add a file called 'dummy_dataset.py' and define a subclass 'DummyDataset' inherited from BaseDataset.
-    If you are using HDF5 datasets, you may directly inherit from HDF5Dataset.
-    You need to implement these functions:
-        -- <__init__>:                      initialize the class, first call BaseDataset.__init__(self, opt).
-        -- <__len__>:                       return the size of dataset.
-        -- <__getitem__>:                   get a data point from data loader.
 """
 import importlib
 from torch.utils import data
@@ -42,8 +37,8 @@ def create_dataset(configuration):
         This is the main interface between this package and train.py/validate.py
 
     Example:
-        >>> from datasets import create_dataset
-        >>> dataset = create_dataset(configuration)
+        from datasets import create_dataset
+        dataset = create_dataset(configuration)
     """
     data_loader = CustomDatasetDataLoader(configuration)
     dataset = data_loader.load_data()
